@@ -20,13 +20,17 @@ const [title, setTitle] = useState('')
     }
     const addTaskHandler = () => {
     props.addTask(title)
+        setTitle('')
     }
     return (
         <div>
             <div>
                 <h3>{props.title}</h3>
                 <div>
-                    <input onChange={onChangeHandler} value={title}/>
+                    <input onChange={onChangeHandler}
+                           value={title}
+
+                    />
                     <button onClick={addTaskHandler}>+</button>
                 </div>
                 <ul>
