@@ -1,9 +1,10 @@
-import React from "react";
+import React, {ChangeEvent} from "react";
 import {FilteredValueType} from "./App";
 
 type TodolistPropsType = {
     title?: string
     tasks: Array<TasksPropsType>
+    addTask: (title: string)=> void
     removeTask: (taskId: string) => void
     changeFilter: (value: FilteredValueType) => void
 }
@@ -13,13 +14,20 @@ type TasksPropsType = {
     isDone: boolean
 }
 export const Todolist = (props: TodolistPropsType) => {
+
+    const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
+
+    }
+    const addTaskHandler = () => {
+
+    }
     return (
         <div>
             <div>
                 <h3>{props.title}</h3>
                 <div>
-                    <input/>
-                    <button>+</button>
+                    <input onChange={onChangeHandler} value={value}/>
+                    <button onClick={addTaskHandler}>+</button>
                 </div>
                 <ul>
                     {props.tasks.map((el) => {
