@@ -28,6 +28,15 @@ export const Todolist = (props: TodolistPropsType) => {
         props.addTask(title)
         setTitle('')
     }
+    const onClickAllHandler = () => {
+        props.changeFilter('all')
+    }
+    const onClickActiveHandler = () => {
+        props.changeFilter('active')
+    }
+    const onClickCompletedHandler = () => {
+        props.changeFilter('completed')
+    }
     return (
         <div>
             <div>
@@ -36,7 +45,6 @@ export const Todolist = (props: TodolistPropsType) => {
                     <input onChange={onChangeHandler}
                            onKeyPress={onKeyPressHandler}
                            value={title}
-
                     />
                     <button onClick={addTaskHandler}>+</button>
                 </div>
@@ -55,17 +63,11 @@ export const Todolist = (props: TodolistPropsType) => {
                     })}
                 </ul>
                 <div>
-                    <button onClick={() => {
-                        props.changeFilter('all')
-                    }}>All
+                    <button onClick={onClickAllHandler}>All
                     </button>
-                    <button onClick={() => {
-                        props.changeFilter('active')
-                    }}>Active
+                    <button onClick={onClickActiveHandler}>Active
                     </button>
-                    <button onClick={() => {
-                        props.changeFilter('completed')
-                    }}>Completed
+                    <button onClick={onClickCompletedHandler}>Completed
                     </button>
                 </div>
             </div>
