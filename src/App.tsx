@@ -28,19 +28,24 @@ function App() {
             {id: v1(), title: 'GraphQL', isDone: false}
         ]
     })
-    function addTask(title: string, ) {
+    function addTask(title: string, todolistId: string) {
         let newTask = {id: v1(), title: title, isDone: false}
-        setTasks([newTask, ...tasks])
+        let task = tasks[todolistId]
+        tasks[todolistId] = [newTask, ...task]
+        setTasks({...tasks})
     }
-    function removeTask(taskId: string) {
-        setTasks(tasks.filter((t) => t.id !== taskId))
+    function removeTask(taskId: string, todolistId: string) {
+        let task = tasks[todolistId]
+        tasks[todolistId] = task.filter(t => t.id != taskId)
+        setTasks({...tasks})
     }
-    function changeStatus (taskId: string, isDone: boolean) {
-        let task = tasks.find(t => t.id === taskId)
-        if(task) {
-            task.isDone = isDone
+    function changeStatus (taskId: string, isDone: boolean, todolistId: string) {
+        let task = tasks[todolistId]
+        let changeTask = task.find(t => t.id === taskId)
+        if(changeTask) {
+            changeTask.isDone = isDone
+        setTasks({...tasks})
         }
-        setTasks([...tasks])
     }
 
 
